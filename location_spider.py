@@ -12,7 +12,7 @@ import utils
 if __name__ == "__main__":
     db.init()
 
-    progress = 0 #int(db.get_param('location_update_progress', 0))
+    progress = int(db.get_param('location_update_progress', 0))
     db.cur.execute("SELECT id FROM location WHERE id > ? ORDER BY id", (progress,))
     rows = db.cur.fetchall()
     tobedone = map(lambda x: x[0], rows)
